@@ -1,18 +1,19 @@
 class LongestWordController < ApplicationController
 
   def game
-    @star_time = Time.now.to_s
-    @grid = generate_grid(9)
+    session[:star_time] = Time.now.to_s
+    session[:grid] = generate_grid(9)
   end
 
   def score
-    grid = params[:grid]
-    star_time = DateTime.parse(params[:star_time])
+    grid = session[:grid]
+    star_time = DateTime.parse(session[:star_time])
     end_time = Time.now
-    @answer = params[:results]
+    @answer = params[:results].upcase
     @time_to_answer = end_time - star_time
     @translation = translation(@answer)
     @player_score = 0
+    session[:score] = []
     attempt_check = included?(@answer, grid)
 
     if attempt_check == true && @translation != @answer

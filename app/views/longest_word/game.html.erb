@@ -1,11 +1,9 @@
-<h1>Welcome to the longest word-game !</h1>
-<p>Here is your grid :</p>
-<p><strong>Grid : </strong><%= @grid.join(" ") %></p>
+<h1 class="text-center">Welcome to the longest word-game !</h1>
+<p class="text-center">Here is your grid :</p>
+<p class="text-center"><strong>Grid : </strong><%= session[:grid].join(" ") %></p>
 <br>
-<form action="score">
+<form action="score" class="text-center">
   <label for="results">What's your best shot ?"</label>
   <input type="text" name="results">
-  <input type="hidden" name="star_time" value='<%= @star_time %>'>
-  <input type="hidden" name="grid" value='<%= @grid %>'>
   <input type="submit">
 </form>
